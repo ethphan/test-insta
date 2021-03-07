@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 
+const config = {
+  redirecURI: "test",
+  clientId: "704688546872217",
+  clientSecret: "eaa76d9597e1b2ae7c26ac5f49cac8ff",
+};
+
 function App() {
   const [instaToken, setInstaToken] = useState(null);
   const [instaUserId, setInstaUserId] = useState(null);
@@ -17,10 +23,10 @@ function App() {
     if (code) {
       console.log(code);
       let data = {
-        client_id: "704688546872217",
-        client_secret: "eaa76d9597e1b2ae7c26ac5f49cac8ff",
+        client_id: config.clientId,
+        client_secret: config.clientSecret,
         grant_type: "authorization_code",
-        redirect_uri: "https://themarche.ca:3100/Login",
+        redirect_uri: config.redirecURI,
         code,
       };
       console.log(data);
@@ -82,7 +88,9 @@ function App() {
     <div>
       <h1>Test Insta Login</h1>
       <div className="instagramLoginButton">
-        <a href="https://api.instagram.com/oauth/authorize?client_id=704688546872217&redirect_uri=https://themarche.ca:3100/Login&scope=user_profile,user_media&response_type=code">
+        <a
+          href={`https://api.instagram.com/oauth/authorize?client_id=${config.clientId}&redirect_uri=${config.redirecURI}&scope=user_profile,user_media&response_type=code`}
+        >
           <button>
             <span>Sign in with Instagram</span>
           </button>
