@@ -36,7 +36,7 @@ function App() {
       }
 
       axios
-        .post("https://api.instagram.com/oauth/access_token", formData)
+        .post("https://cors-anywhere.herokuapp.com/https://api.instagram.com/oauth/access_token", formData)
         .then((res) => {
           console.log(res);
           const { access_token, user_id } = res.data;
