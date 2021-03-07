@@ -3,7 +3,7 @@ import "./App.css";
 import axios from "axios";
 
 const config = {
-  redirecURI: "test",
+  redirecURI: "https://test-insta-login.netlify.app/",
   clientId: "704688546872217",
   clientSecret: "eaa76d9597e1b2ae7c26ac5f49cac8ff",
 };
