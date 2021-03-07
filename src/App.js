@@ -58,7 +58,7 @@ function App() {
     if (instaToken && instaUserId) {
       axios
         .get(
-          `https://graph.instagram.com/${instaUserId}?fields=id,username,account_type,media_count,media&access_token=${instaToken}`
+          `https://graph.instagram.com/${instaUserId}?fields=id,username&access_token=${instaToken}`
         )
         .then((res) => {
           console.log(res);
