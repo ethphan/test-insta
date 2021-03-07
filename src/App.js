@@ -60,8 +60,8 @@ function App() {
         .get(`https://graph.instagram.com/me?fields=id,username&access_token=${instaToken}`)
         .then((res) => {
           console.log(res);
-          const { userName } = res.data;
-          setInstaUserName(userName);
+          const { username } = res.data;
+          setInstaUserName(username);
         })
         .catch((err) => {
           console.log(err);
