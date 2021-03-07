@@ -72,7 +72,7 @@ function App() {
   useEffect(() => {
     if (instaUserName) {
       axios
-        .get(`https://www.instagram.com/${instaUserName}/?__a=1`)
+        .get(`https://cors-anywhere.herokuapp.com/https://www.instagram.com/${instaUserName}/?__a=1`)
         .then((res) => {
           console.log(res);
           const { profile_pic_url_hd } = res.data.graphql.user;
