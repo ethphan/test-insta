@@ -35,6 +35,8 @@ function App() {
         formData.append(key, data[key]);
       }
 
+      console.log("https://cors-anywhere.herokuapp.com/https://api.instagram.com/oauth/access_token");
+
       axios
         .post("https://cors-anywhere.herokuapp.com/https://api.instagram.com/oauth/access_token", formData)
         .then((res) => {
