@@ -57,9 +57,7 @@ function App() {
   useEffect(() => {
     if (instaToken && instaUserId) {
       axios
-        .get(
-          `https://graph.instagram.com/me?fields=id,username&access_token=${instaToken}`
-        )
+        .get(`https://graph.instagram.com/me?fields=id,username&access_token=${instaToken}`)
         .then((res) => {
           console.log(res);
           const { userName } = res.data;
@@ -99,6 +97,7 @@ function App() {
           </button>
         </a>
       </div>
+      {instaAvt ? <img src={instaAvt} alt="img" /> : null}
     </div>
   );
 }
