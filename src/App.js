@@ -31,7 +31,8 @@ function App() {
       };
       console.log(data);
       let formData = new FormData();
-      for (let key in Object.keys(data)) {
+      for (let key of Object.keys(data)) {
+        console.log(data[key]);
         formData.append(key, data[key]);
       }
 
