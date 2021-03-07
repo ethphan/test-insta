@@ -59,8 +59,8 @@ function App() {
       axios
         .get(`https://graph.instagram.com/me?fields=id,username&access_token=${instaToken}`)
         .then((res) => {
-          console.log(res);
           const { username } = res.data;
+          console.log(username);
           setInstaUserName(username);
         })
         .catch((err) => {
@@ -76,6 +76,8 @@ function App() {
         .then((res) => {
           console.log(res);
           const { profile_pic_url_hd } = res.data.graphql.user;
+
+          console.log(profile_pic_url_hd);
           setInstaAvt(profile_pic_url_hd);
           showInstaLoginModal(true);
         })
