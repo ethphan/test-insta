@@ -23,8 +23,8 @@ function App() {
     if (code) {
       console.log(code);
       let data = {
-        client_id: config.clientId,
-        client_secret: config.clientSecret,
+        client_id: process.env.REACT_APP_CLIENT_ID,
+        client_secret: process.env.REACT_APP_SECRETE,
         grant_type: "authorization_code",
         redirect_uri: config.redirecURI,
         code,
@@ -92,7 +92,7 @@ function App() {
       <h1>Test Insta Login</h1>
       <div className="instagramLoginButton">
         <a
-          href={`https://api.instagram.com/oauth/authorize?client_id=${config.clientId}&redirect_uri=${config.redirecURI}&scope=user_profile,user_media&response_type=code`}
+          href={`https://api.instagram.com/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${config.redirecURI}&scope=user_profile,user_media&response_type=code`}
         >
           <button>
             <span>Sign in with Instagram</span>
