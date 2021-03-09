@@ -36,10 +36,10 @@ function App() {
         formData.append(key, data[key]);
       }
 
-      console.log("https://cors-anywhere.herokuapp.com/https://api.instagram.com/oauth/access_token");
+      console.log("https://api.instagram.com/oauth/access_token");
 
       axios
-        .post("https://cors-anywhere.herokuapp.com/https://api.instagram.com/oauth/access_token", formData)
+        .post("https://api.instagram.com/oauth/access_token", formData)
         .then((res) => {
           console.log(res);
           const { access_token, user_id } = res.data;
@@ -72,7 +72,7 @@ function App() {
   useEffect(() => {
     if (instaUserName) {
       axios
-        .get(`https://cors-anywhere.herokuapp.com/https://www.instagram.com/${instaUserName}/?__a=1`)
+        .get(`https://www.instagram.com/${instaUserName}/?__a=1`)
         .then((res) => {
           console.log(res);
           const { profile_pic_url_hd } = res.data.graphql.user;
