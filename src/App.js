@@ -39,7 +39,7 @@ function App() {
       console.log("https://api.instagram.com/oauth/access_token");
 
       axios
-        .post("https://api.instagram.com/oauth/access_token", formData)
+        .post("/oauth/access_token", formData)
         .then((res) => {
           console.log(res);
           const { access_token, user_id } = res.data;
