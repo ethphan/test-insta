@@ -89,7 +89,9 @@ function App() {
 
   return (
     <div>
-      <h1>Test Insta Login</h1>
+      <a href="/">
+        <h1>Test Insta Login</h1>
+      </a>
       <div className="instagramLoginButton">
         <a
           href={`https://api.instagram.com/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${config.redirecURI}&scope=user_profile,user_media&response_type=code`}
