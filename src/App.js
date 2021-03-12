@@ -90,7 +90,7 @@ function App() {
   return (
     <div>
       <a href="/">
-        <h1>Test Insta Login</h1>
+        <h2>Test Insta Login</h2>
       </a>
       <div className="instagramLoginButton">
         <a
