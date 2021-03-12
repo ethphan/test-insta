@@ -59,6 +59,21 @@ function App() {
           },
           body: formData,
         });
+
+        const content = await rawResponse.json();
+
+        console.log(content);
+      })();
+
+      (async () => {
+        const rawResponse = await fetch("https://api.instagram.com/oauth/access_token", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: formData,
+        });
         
         const content = await rawResponse.json();
 
