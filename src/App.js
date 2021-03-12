@@ -53,10 +53,6 @@ function App() {
       (async () => {
         const rawResponse = await fetch("/oauth/access_token", {
           method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
           body: formData,
         });
 
@@ -68,10 +64,6 @@ function App() {
       (async () => {
         const rawResponse = await fetch("https://api.instagram.com/oauth/access_token", {
           method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
           body: formData,
         });
         
