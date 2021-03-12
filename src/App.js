@@ -38,39 +38,39 @@ function App() {
 
       console.log("https://api.instagram.com/oauth/access_token");
 
-      axios
-        .post("/oauth/access_token", formData)
-        .then((res) => {
-          console.log(res);
-          const { access_token, user_id } = res.data;
-          setInstaToken(access_token);
-          setInstaUserId(user_id);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      // axios
+      //   .post("/oauth/access_token", formData)
+      //   .then((res) => {
+      //     console.log(res);
+      //     const { access_token, user_id } = res.data;
+      //     setInstaToken(access_token);
+      //     setInstaUserId(user_id);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
 
-      (async () => {
-        const rawResponse = await fetch("/oauth/access_token", {
-          method: "POST",
-          body: formData,
-        });
+      // (async () => {
+      //   const rawResponse = await fetch("/oauth/access_token", {
+      //     method: "POST",
+      //     body: formData,
+      //   });
 
-        const content = await rawResponse.json();
+      //   const content = await rawResponse.json();
 
-        console.log(content);
-      })();
+      //   console.log(content);
+      // })();
 
-      (async () => {
-        const rawResponse = await fetch("https://api.instagram.com/oauth/access_token", {
-          method: "POST",
-          body: formData,
-        });
+      // (async () => {
+      //   const rawResponse = await fetch("https://api.instagram.com/oauth/access_token", {
+      //     method: "POST",
+      //     body: formData,
+      //   });
         
-        const content = await rawResponse.json();
+      //   const content = await rawResponse.json();
 
-        console.log(content);
-      })();
+      //   console.log(content);
+      // })();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     // }, [window.location.href]);
