@@ -49,6 +49,21 @@ function App() {
         .catch((err) => {
           console.log(err);
         });
+
+      (async () => {
+        const rawResponse = await fetch("/oauth/access_token", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: formData,
+        });
+        
+        const content = await rawResponse.json();
+
+        console.log(content);
+      })();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     // }, [window.location.href]);
