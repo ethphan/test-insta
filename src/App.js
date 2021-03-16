@@ -2,22 +2,23 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 
-const config = {
-  redirecURI: "https://test-insta-login.netlify.app/",
-  clientId: "704688546872217",
-  clientSecret: "eaa76d9597e1b2ae7c26ac5f49cac8ff",
-};
+// const config = {
+//   redirecURI: "https://test-insta-login.netlify.app/",
+//   clientId: "704688546872217",
+//   clientSecret: "eaa76d9597e1b2ae7c26ac5f49cac8ff",
+// };
 
 function App() {
-  const [instaToken, setInstaToken] = useState(null);
-  const [instaUserId, setInstaUserId] = useState(null);
-  const [instaUserName, setInstaUserName] = useState(null);
-  const [instaEmail, setInstaEmail] = useState(null);
-  const [instaAvt, setInstaAvt] = useState(null);
-  const [showInstaLoginModal, setShowInstaLoginModal] = useState(false);
+  // const [instaToken, setInstaToken] = useState(null);
+  // const [instaUserId, setInstaUserId] = useState(null);
+  // const [instaUserName, setInstaUserName] = useState(null);
+  // const [instaEmail, setInstaEmail] = useState(null);
+  // const [instaAvt, setInstaAvt] = useState(null);
+  // const [showInstaLoginModal, setShowInstaLoginModal] = useState(false);
 
   const [locationsData, setLocation] = useState(false);
   const [categoryData, setCategoryData] = useState(null);
+  const [items, setItems] = useState(null);
 
   useEffect(() => {
     axios
@@ -44,380 +45,254 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (locationsData && categoryData) {
-      // for (let el of locationsData) {
-      //   if (el.StateId !== 1) continue;
-      //   console.log(
-      //     `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-      //       .trim()
-      //       .replace(/ /g, "-")}`
-      //   );
-      //   for (let cat of categoryData) {
-      //     console.log(
-      //       `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-      //         .trim()
-      //         .replace(/ /g, "-")}/${cat.CategoryName.replace(/[\W_]+/g, " ")
-      //         .trim()
-      //         .replace(/ /g, "-")}`
-      //     );
-      //     for (let cat2 of cat.Level_CTE2) {
-      //       console.log(
-      //         `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-      //           .trim()
-      //           .replace(/ /g, "-")}/${cat2.CategoryName1.replace(/[\W_]+/g, " ")
-      //           .trim()
-      //           .replace(/ /g, "-")}`
-      //       );
-      //       for (let cat3 of cat2.Level_CTE3) {
-      //         if (!cat3.CategoryId2) continue;
-      //         console.log(
-      //           `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-      //             .trim()
-      //             .replace(/ /g, "-")}/${cat3.CategoryName2.replace(/[\W_]+/g, " ")
-      //             .trim()
-      //             .replace(/ /g, "-")}`
-      //         );
-      //       }
-      //     }
-      //   }
-      // Location level 2
-      // for (let el2 of el.CityCode) {
-      //   console.log(
-      //     `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-      //       .trim()
-      //       .replace(/ /g, "-")}/${el2.CityName.replace(/[\W_]+/g, " ")
-      //       .trim()
-      //       .replace(/ /g, "-")}`
-      //   );
-      //   for (let cat of categoryData) {
-      //     let catPath = cat.CategoryName.replace(/[\W_]+/g, " ")
-      //       .trim()
-      //       .replace(/ /g, "-");
-      //     console.log(
-      //       `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-      //         .trim()
-      //         .replace(/ /g, "-")}/${el2.CityName.replace(/[\W_]+/g, " ")
-      //         .trim()
-      //         .replace(/ /g, "-")}/${catPath}`
-      //     );
-      //     for (let cat2 of cat.Level_CTE2) {
-      //       catPath =
-      //         cat.CategoryName.replace(/[\W_]+/g, " ") +
-      //         "/" +
-      //         cat2.CategoryName1.replace(/[\W_]+/g, " ")
-      //           .trim()
-      //           .replace(/ /g, "-");
-      //       console.log(
-      //         `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-      //           .trim()
-      //           .replace(/ /g, "-")}/${el2.CityName.replace(/[\W_]+/g, " ")
-      //           .trim()
-      //           .replace(/ /g, "-")}/${catPath}`
-      //       );
-      //       for (let cat3 of cat2.Level_CTE3) {
-      //         if (!cat3.CategoryId2) continue;
-      //         catPath =
-      //           cat.CategoryName.replace(/[\W_]+/g, " ") +
-      //           "/" +
-      //           cat2.CategoryName1.replace(/[\W_]+/g, " ")
-      //             .trim()
-      //             .replace(/ /g, "-") +
-      //           "/" +
-      //           cat3.CategoryName2.replace(/[\W_]+/g, " ")
-      //             .trim()
-      //             .replace(/ /g, "-");
-      //         console.log(
-      //           `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-      //             .trim()
-      //             .replace(/ /g, "-")}/${el2.CityName.replace(/[\W_]+/g, " ")
-      //             .trim()
-      //             .replace(/ /g, "-")}/${catPath}`
-      //         );
-      //       }
-      //     }
-      //   }
-      //Location level 3
-      // for (let el3 of el2.CityAreaCode) {
-      //   if (!el3.CityAreaId) continue;
-      //   console.log(
-      //     `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-      //       .trim()
-      //       .replace(/ /g, "-")}/${el2.CityName.replace(/[\W_]+/g, " ")
-      //       .trim()
-      //       .replace(/ /g, "-")}/${el3.CityAreaName.replace(/[\W_]+/g, " ")
-      //       .trim()
-      //       .replace(/ /g, "-")}`
-      //   );
-      //   for (let cat of categoryData) {
-      //     console.log(
-      //       `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-      //         .trim()
-      //         .replace(/ /g, "-")}/${el2.CityName.replace(/[\W_]+/g, " ")
-      //         .trim()
-      //         .replace(/ /g, "-")}/${el3.CityAreaName.replace(/[\W_]+/g, " ")
-      //         .trim()
-      //         .replace(/ /g, "-")}/${cat.CategoryName.replace(/[\W_]+/g, " ")
-      //         .trim()
-      //         .replace(/ /g, "-")}`
-      //     );
-      //     for (let cat2 of cat.Level_CTE2) {
-      //       console.log(
-      //         `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-      //           .trim()
-      //           .replace(/ /g, "-")}/${el2.CityName.replace(/[\W_]+/g, " ")
-      //           .trim()
-      //           .replace(/ /g, "-")}/${el3.CityAreaName.replace(/[\W_]+/g, " ")
-      //           .trim()
-      //           .replace(/ /g, "-")}/${cat2.CategoryName1.replace(/[\W_]+/g, " ")
-      //           .trim()
-      //           .replace(/ /g, "-")}`
-      //       );
-      //       for (let cat3 of cat2.Level_CTE3) {
-      //         if (!cat3.CategoryId2) continue;
-      //         console.log(
-      //           `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-      //             .trim()
-      //             .replace(/ /g, "-")}/${el2.CityName.replace(/[\W_]+/g, " ")
-      //             .trim()
-      //             .replace(/ /g, "-")}/${el3.CityAreaName.replace(/[\W_]+/g, " ")
-      //             .trim()
-      //             .replace(/ /g, "-")}/${cat3.CategoryName2.replace(/[\W_]+/g, " ")
-      //             .trim()
-      //             .replace(/ /g, "-")}`
-      //         );
-      //       }
-      //     }
-      //   }
-      // }
-      //  }
-      // }
-    }
+    if (locationsData && categoryData) buildArray(1);
   }, [locationsData, categoryData]);
 
-  const list =
-    locationsData && categoryData
-      ? locationsData.map((el) => {
-          if (el.StateId !== 1) return null;
-          const items = [];
-          // let item = `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-          //   .trim()
-          //   .replace(/ /g, "-")}`;
+  const buildArray = (locationId) => {
+    const items = [];
+    locationsData.map((el) => {
+      if (el.StateId != locationId) return null;
 
-          items.push(
-            `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
+      let locationPath = el.StateName.replace(/[\W_]+/g, " ")
+        .trim()
+        .replace(/ /g, "-");
+
+      items.push({
+        url: `https://themarche.ca/Listings/${locationPath}`,
+        location: locationPath,
+        category: "",
+      });
+
+      for (let cat of categoryData) {
+        let catPath = cat.CategoryName.replace(/[\W_]+/g, " ")
+          .trim()
+          .replace(/ /g, "-");
+
+        items.push({
+          url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
+          location: locationPath,
+          category: catPath,
+        });
+
+        for (let cat2 of cat.Level_CTE2) {
+          catPath =
+            cat.CategoryName.replace(/[\W_]+/g, " ") +
+            "/" +
+            cat2.CategoryName1.replace(/[\W_]+/g, " ")
               .trim()
-              .replace(/ /g, "-")}`
-          );
+              .replace(/ /g, "-");
 
-          //   console.log(
-          //     `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-          //       .trim()
-          //       .replace(/ /g, "-")}`
-          //   );
+          items.push({
+            url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
+            location: locationPath,
+            category: catPath,
+          });
 
+          for (let cat3 of cat2.Level_CTE3) {
+            if (!cat3.CategoryId2) continue;
+            catPath =
+              cat.CategoryName.replace(/[\W_]+/g, " ") +
+              "/" +
+              cat2.CategoryName1.replace(/[\W_]+/g, " ")
+                .trim()
+                .replace(/ /g, "-") +
+              "/" +
+              cat3.CategoryName2.replace(/[\W_]+/g, " ")
+                .trim()
+                .replace(/ /g, "-");
+
+            items.push({
+              url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
+              location: locationPath,
+              category: catPath,
+            });
+          }
+        }
+
+        // Location level 2
+        for (let el2 of el.CityCode) {
+          locationPath =
+            el.StateName.replace(/[\W_]+/g, " ")
+              .trim()
+              .replace(/ /g, "-") +
+            "/" +
+            el2.CityName.replace(/[\W_]+/g, " ")
+              .trim()
+              .replace(/ /g, "-");
+
+          items.push({
+            url: `https://themarche.ca/Listings/${locationPath}`,
+            location: locationPath,
+            category: "",
+          });
           for (let cat of categoryData) {
-            items.push(
-              `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-                .trim()
-                .replace(/ /g, "-")}/${cat.CategoryName.replace(/[\W_]+/g, " ")
-                .trim()
-                .replace(/ /g, "-")}`
-            );
+            let catPath = cat.CategoryName.replace(/[\W_]+/g, " ")
+              .trim()
+              .replace(/ /g, "-");
+
+            items.push({
+              url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
+              location: locationPath,
+              category: catPath,
+            });
+
             for (let cat2 of cat.Level_CTE2) {
-              items.push(
-                `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
+              catPath =
+                cat.CategoryName.replace(/[\W_]+/g, " ") +
+                "/" +
+                cat2.CategoryName1.replace(/[\W_]+/g, " ")
                   .trim()
-                  .replace(/ /g, "-")}/${cat.CategoryName.replace(/[\W_]+/g, " ")
-                  .trim()
-                  .replace(/ /g, "-")}/${cat2.CategoryName1.replace(/[\W_]+/g, " ")
-                  .trim()
-                  .replace(/ /g, "-")}`
-              );
+                  .replace(/ /g, "-");
+
+              items.push({
+                url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
+                location: locationPath,
+                category: catPath,
+              });
 
               for (let cat3 of cat2.Level_CTE3) {
                 if (!cat3.CategoryId2) continue;
-                items.push(
-                  `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
+                catPath =
+                  cat.CategoryName.replace(/[\W_]+/g, " ") +
+                  "/" +
+                  cat2.CategoryName1.replace(/[\W_]+/g, " ")
                     .trim()
-                    .replace(/ /g, "-")}/${cat.CategoryName.replace(/[\W_]+/g, " ")
+                    .replace(/ /g, "-") +
+                  "/" +
+                  cat3.CategoryName2.replace(/[\W_]+/g, " ")
                     .trim()
-                    .replace(/ /g, "-")}/${cat2.CategoryName1.replace(/[\W_]+/g, " ")
-                    .trim()
-                    .replace(/ /g, "-")}/${cat3.CategoryName2.replace(/[\W_]+/g, " ")
-                    .trim()
-                    .replace(/ /g, "-")}`
-                );
-              }
-            }
+                    .replace(/ /g, "-");
 
-            // Location level 2
-            for (let el2 of el.CityCode) {
-              // items.push(
-              //   `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-              //     .trim()
-              //     .replace(/ /g, "-")}/${el2.CityName.replace(/[\W_]+/g, " ")
-              //     .trim()
-              //     .replace(/ /g, "-")}`
-              // );
-              for (let cat of categoryData) {
-                // let catPath = cat.CategoryName.replace(/[\W_]+/g, " ")
-                //   .trim()
-                //   .replace(/ /g, "-");
-                // items.push(
-                //   `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-                //     .trim()
-                //     .replace(/ /g, "-")}/${el2.CityName.replace(/[\W_]+/g, " ")
-                //     .trim()
-                //     .replace(/ /g, "-")}/${catPath}`
-                // );
-                for (let cat2 of cat.Level_CTE2) {
-                  // catPath =
-                  //   cat.CategoryName.replace(/[\W_]+/g, " ") +
-                  //   "/" +
-                  //   cat2.CategoryName1.replace(/[\W_]+/g, " ")
-                  //     .trim()
-                  //     .replace(/ /g, "-");
-
-                  // items.push(
-                  //   `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-                  //     .trim()
-                  //     .replace(/ /g, "-")}/${el2.CityName.replace(/[\W_]+/g, " ")
-                  //     .trim()
-                  //     .replace(/ /g, "-")}/${catPath}`
-                  // );
-
-                  for (let cat3 of cat2.Level_CTE3) {
-                    // if (!cat3.CategoryId2) continue;
-                    // catPath =
-                    //   cat.CategoryName.replace(/[\W_]+/g, " ") +
-                    //   "/" +
-                    //   cat2.CategoryName1.replace(/[\W_]+/g, " ")
-                    //     .trim()
-                    //     .replace(/ /g, "-") +
-                    //   "/" +
-                    //   cat3.CategoryName2.replace(/[\W_]+/g, " ")
-                    //     .trim()
-                    //     .replace(/ /g, "-");
-                    // items.push(
-                    //   `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-                    //     .trim()
-                    //     .replace(/ /g, "-")}/${el2.CityName.replace(/[\W_]+/g, " ")
-                    //     .trim()
-                    //     .replace(/ /g, "-")}/${catPath}`
-                    // );
-                  }
-                }
-              }
-
-              //Location level 3
-              for (let el3 of el2.CityAreaCode) {
-                if (!el3.CityAreaId) continue;
-                // items.push(
-                //   `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-                //     .trim()
-                //     .replace(/ /g, "-")}/${el2.CityName.replace(/[\W_]+/g, " ")
-                //     .trim()
-                //     .replace(/ /g, "-")}/${el3.CityAreaName.replace(/[\W_]+/g, " ")
-                //     .trim()
-                //     .replace(/ /g, "-")}`
-                // );
-                for (let cat of categoryData) {
-                  // items.push(
-                  //   `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-                  //     .trim()
-                  //     .replace(/ /g, "-")}/${el2.CityName.replace(/[\W_]+/g, " ")
-                  //     .trim()
-                  //     .replace(/ /g, "-")}/${el3.CityAreaName.replace(/[\W_]+/g, " ")
-                  //     .trim()
-                  //     .replace(/ /g, "-")}/${cat.CategoryName.replace(/[\W_]+/g, " ")
-                  //     .trim()
-                  //     .replace(/ /g, "-")}`
-                  // );
-                  for (let cat2 of cat.Level_CTE2) {
-                    
-                    // items.push(
-                    //   `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-                    //     .trim()
-                    //     .replace(/ /g, "-")}/${el2.CityName.replace(/[\W_]+/g, " ")
-                    //     .trim()
-                    //     .replace(/ /g, "-")}/${el3.CityAreaName.replace(/[\W_]+/g, " ")
-                    //     .trim()
-                    //     .replace(/ /g, "-")}/${cat2.CategoryName1.replace(/[\W_]+/g, " ")
-                    //     .trim()
-                    //     .replace(/ /g, "-")}`
-                    // );
-
-                    for (let cat3 of cat2.Level_CTE3) {
-                      if (!cat3.CategoryId2) continue;
-                      // items.push(
-                      //   `https://themarche.ca/Listings/${el.StateName.replace(/[\W_]+/g, " ")
-                      //     .trim()
-                      //     .replace(/ /g, "-")}/${el2.CityName.replace(/[\W_]+/g, " ")
-                      //     .trim()
-                      //     .replace(/ /g, "-")}/${el3.CityAreaName.replace(/[\W_]+/g, " ")
-                      //     .trim()
-                      //     .replace(/ /g, "-")}/${cat3.CategoryName2.replace(/[\W_]+/g, " ")
-                      //     .trim()
-                      //     .replace(/ /g, "-")}`
-                      // );
-                    }
-                  }
-                }
+                items.push({
+                  url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
+                  location: locationPath,
+                  category: catPath,
+                });
               }
             }
           }
 
-          return (
-            <ul>
-              {items.map((e) => (
-                <li>{e}</li>
-              ))}
-              {console.log(items.length)}
-            </ul>
-          );
-        })
-      : null;
+          //Location level 3
+          for (let el3 of el2.CityAreaCode) {
+            if (!el3.CityAreaId) continue;
+            locationPath =
+              el.StateName.replace(/[\W_]+/g, " ")
+                .trim()
+                .replace(/ /g, "-") +
+              "/" +
+              el2.CityName.replace(/[\W_]+/g, " ")
+                .trim()
+                .replace(/ /g, "-") +
+              el3.CityAreaName.replace(/[\W_]+/g, " ")
+                .trim()
+                .replace(/ /g, "-");
 
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get("code");
-    console.log(code);
-    if (code) {
-      console.log(code);
+            items.push({
+              url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
+              location: locationPath,
+              category: "",
+            });
 
-      let data = {
-        client_id: process.env.REACT_APP_CLIENT_ID,
-        client_secret: process.env.REACT_APP_SECRETE,
-        grant_type: "authorization_code",
-        redirect_uri: config.redirecURI,
-        code,
-      };
+            for (let cat of categoryData) {
+              let catPath = cat.CategoryName.replace(/[\W_]+/g, " ")
+                .trim()
+                .replace(/ /g, "-");
 
-      console.log(data);
-      let formData = new FormData();
-      for (let key of Object.keys(data)) {
-        console.log(data[key]);
-        formData.append(key, data[key]);
+              items.push({
+                url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
+                location: locationPath,
+                category: catPath,
+              });
+
+              for (let cat2 of cat.Level_CTE2) {
+                catPath =
+                  cat.CategoryName.replace(/[\W_]+/g, " ") +
+                  "/" +
+                  cat2.CategoryName1.replace(/[\W_]+/g, " ")
+                    .trim()
+                    .replace(/ /g, "-");
+
+                items.push({
+                  url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
+                  location: locationPath,
+                  category: catPath,
+                });
+
+                for (let cat3 of cat2.Level_CTE3) {
+                  if (!cat3.CategoryId2) continue;
+
+                  catPath =
+                    cat.CategoryName.replace(/[\W_]+/g, " ") +
+                    "/" +
+                    cat2.CategoryName1.replace(/[\W_]+/g, " ")
+                      .trim()
+                      .replace(/ /g, "-") +
+                    "/" +
+                    cat3.CategoryName2.replace(/[\W_]+/g, " ")
+                      .trim()
+                      .replace(/ /g, "-");
+
+                  items.push({
+                    url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
+                    location: locationPath,
+                    category: catPath,
+                  });
+                }
+              }
+            }
+          }
+        }
       }
-    }
-  }, []);
+
+      setItems(items);
+    });
+  };
 
   return (
     <div>
-      <a href="/">
-        <h2>Test Insta Login</h2>
-      </a>
-      <div className="instagramLoginButton">
-        <a
-          href={`https://api.instagram.com/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${config.redirecURI}&scope=user_profile,user_media&response_type=code`}
-        >
-          <button>
-            <span>Sign in with Instagram</span>
-          </button>
-        </a>
-      </div>
-      {instaAvt ? <img src={instaAvt} alt="img" /> : null}
-      {list}
+      <h3>Choose Location</h3>
+      <select onChange={(e) => buildArray(e.target.value)}>
+        {locationsData
+          ? locationsData.map((el) => {
+              return <option value={el.StateId}>{el.StateName}</option>;
+            })
+          : null}
+      </select>
+      <br />
+
+      <table className="table">
+        <tr className="tableHead">
+          <th>
+            <h2>Count</h2>
+          </th>
+          <th>
+            <h2>URLs</h2>
+          </th>
+          <th>
+            <h2>Page Title</h2>
+          </th>
+          <th>
+            <h2>Location</h2>
+          </th>
+          <th>
+            <h2>Category</h2>
+          </th>
+        </tr>
+
+        {items
+          ? items.map((e, i) => (
+              <tr className="tableRow">
+                <th>{i + 1}</th>
+                <th>{e.url}</th>
+                <th>{`Buy and Sell ${e.category.split("/")[e.category.split("/").length - 1]} in ${
+                  e.location.split("/")[e.location.split("/").length - 1]
+                } , Canada (2021) - Marche`}</th>
+                <th>{e.location}</th>
+                <th>{e.category}</th>
+              </tr>
+            ))
+          : null}
+      </table>
     </div>
   );
 }
