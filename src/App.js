@@ -61,6 +61,9 @@ function App() {
         url: `https://themarche.ca/Listings/${locationPath}`,
         locationPath,
         catPath: "",
+        location: el.StateName,
+        category: "",
+        id: "",
       });
 
       for (let cat of categoryData) {
@@ -72,6 +75,9 @@ function App() {
           url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
           locationPath,
           catPath,
+          location: el.StateName,
+          category: cat.CategoryName,
+          id: cat.CategoryId,
         });
 
         for (let cat2 of cat.Level_CTE2) {
@@ -88,6 +94,9 @@ function App() {
             url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
             locationPath,
             catPath,
+            location: el.StateName,
+            category: cat2.CategoryName1,
+            id: cat.CategoryId,
           });
 
           for (let cat3 of cat2.Level_CTE3) {
@@ -106,6 +115,9 @@ function App() {
                 .replace(/ /g, "-");
 
             items.push({
+              location: el.StateName,
+              category: cat3.CategoryName2,
+              id: cat.CategoryId,
               url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
               locationPath,
               catPath,
@@ -125,6 +137,9 @@ function App() {
               .replace(/ /g, "-");
 
           items.push({
+            location: el2.CityName,
+            category: "",
+            id: "",
             url: `https://themarche.ca/Listings/${locationPath}`,
             locationPath,
             catPath: "",
@@ -135,6 +150,9 @@ function App() {
               .replace(/ /g, "-");
 
             items.push({
+              location: el2.CityName,
+              category: cat.CategoryName,
+              id: cat.CategoryId,
               url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
               locationPath,
               catPath,
@@ -151,6 +169,9 @@ function App() {
                   .replace(/ /g, "-");
 
               items.push({
+                location: el2.CityName,
+                category: cat2.CategoryName1,
+                id: cat.CategoryId,
                 url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
                 locationPath,
                 catPath,
@@ -172,6 +193,9 @@ function App() {
                     .replace(/ /g, "-");
 
                 items.push({
+                  location: el2.CityName,
+                  category: cat3.CategoryName2,
+                  id: cat.CategoryId,
                   url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
                   locationPath,
                   catPath,
@@ -196,6 +220,9 @@ function App() {
                 .replace(/ /g, "-");
 
             items.push({
+              location: el3.CityAreaName,
+              category: "",
+              id: "",
               url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
               locationPath,
               catPath: "",
@@ -207,6 +234,9 @@ function App() {
                 .replace(/ /g, "-");
 
               items.push({
+                location: el3.CityAreaName,
+                category: cat.CategoryName,
+                id: cat.CategoryId,
                 url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
                 locationPath,
                 catPath,
@@ -223,6 +253,9 @@ function App() {
                     .replace(/ /g, "-");
 
                 items.push({
+                  location: el3.CityAreaName,
+                  category: cat2.CategoryName1,
+                  id: cat.CategoryId,
                   url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
                   locationPath,
                   catPath,
@@ -245,6 +278,9 @@ function App() {
                       .replace(/ /g, "-");
 
                   items.push({
+                    location: el3.CityAreaName,
+                    category: cat3.CategoryName2,
+                    id: cat.CategoryId,
                     url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
                     locationPath,
                     catPath,
@@ -296,13 +332,18 @@ function App() {
               <tr className="tableRow">
                 <th>{i + 1}</th>
                 <th>{e.url}</th>
-                <th>{`Buy and Sell ${e.catPath
+                {/* <th>{`Buy and Sell ${e.catPath
                   .split("/")
                   [e.catPath.split("/").length - 1].split("-")
                   .join(" ")} in ${e.locationPath
                   .split("/")
                   [e.locationPath.split("/").length - 1].split("-")
-                  .join(" ")}, Canada (2021) - Marche`}</th>
+                  .join(" ")}, Canada (2021) - Marche Classifieds`}</th> */}
+                <th>{`${
+                  e.id == 3152 ? "Hire or Find Jobs about" : e.id == 3149 ? "Find and Advertise" : "Buy and Sell"
+                } ${e.category} in ${e.location}, Canada${
+                  e.id == 3152 || e.id == 3152 ? "" : " New/Used"
+                } (2021) - Marche Classifieds`}</th>
                 <th>{e.locationPath}</th>
                 <th>{e.catPath}</th>
               </tr>
