@@ -59,8 +59,8 @@ function App() {
 
       items.push({
         url: `https://themarche.ca/Listings/${locationPath}`,
-        location: locationPath,
-        category: "",
+        locationPath,
+        catPath: "",
       });
 
       for (let cat of categoryData) {
@@ -70,13 +70,15 @@ function App() {
 
         items.push({
           url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
-          location: locationPath,
-          category: catPath,
+          locationPath,
+          catPath,
         });
 
         for (let cat2 of cat.Level_CTE2) {
           catPath =
-            cat.CategoryName.replace(/[\W_]+/g, " ") +
+            cat.CategoryName.replace(/[\W_]+/g, " ")
+              .trim()
+              .replace(/ /g, "-") +
             "/" +
             cat2.CategoryName1.replace(/[\W_]+/g, " ")
               .trim()
@@ -84,14 +86,16 @@ function App() {
 
           items.push({
             url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
-            location: locationPath,
-            category: catPath,
+            locationPath,
+            catPath,
           });
 
           for (let cat3 of cat2.Level_CTE3) {
             if (!cat3.CategoryId2) continue;
             catPath =
-              cat.CategoryName.replace(/[\W_]+/g, " ") +
+              cat.CategoryName.replace(/[\W_]+/g, " ")
+                .trim()
+                .replace(/ /g, "-") +
               "/" +
               cat2.CategoryName1.replace(/[\W_]+/g, " ")
                 .trim()
@@ -103,8 +107,8 @@ function App() {
 
             items.push({
               url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
-              location: locationPath,
-              category: catPath,
+              locationPath,
+              catPath,
             });
           }
         }
@@ -122,8 +126,8 @@ function App() {
 
           items.push({
             url: `https://themarche.ca/Listings/${locationPath}`,
-            location: locationPath,
-            category: "",
+            locationPath,
+            catPath: "",
           });
           for (let cat of categoryData) {
             let catPath = cat.CategoryName.replace(/[\W_]+/g, " ")
@@ -132,13 +136,15 @@ function App() {
 
             items.push({
               url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
-              location: locationPath,
-              category: catPath,
+              locationPath,
+              catPath,
             });
 
             for (let cat2 of cat.Level_CTE2) {
               catPath =
-                cat.CategoryName.replace(/[\W_]+/g, " ") +
+                cat.CategoryName.replace(/[\W_]+/g, " ")
+                  .trim()
+                  .replace(/ /g, "-") +
                 "/" +
                 cat2.CategoryName1.replace(/[\W_]+/g, " ")
                   .trim()
@@ -146,14 +152,16 @@ function App() {
 
               items.push({
                 url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
-                location: locationPath,
-                category: catPath,
+                locationPath,
+                catPath,
               });
 
               for (let cat3 of cat2.Level_CTE3) {
                 if (!cat3.CategoryId2) continue;
                 catPath =
-                  cat.CategoryName.replace(/[\W_]+/g, " ") +
+                  cat.CategoryName.replace(/[\W_]+/g, " ")
+                    .trim()
+                    .replace(/ /g, "-") +
                   "/" +
                   cat2.CategoryName1.replace(/[\W_]+/g, " ")
                     .trim()
@@ -165,8 +173,8 @@ function App() {
 
                 items.push({
                   url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
-                  location: locationPath,
-                  category: catPath,
+                  locationPath,
+                  catPath,
                 });
               }
             }
@@ -189,8 +197,8 @@ function App() {
 
             items.push({
               url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
-              location: locationPath,
-              category: "",
+              locationPath,
+              catPath: "",
             });
 
             for (let cat of categoryData) {
@@ -200,13 +208,15 @@ function App() {
 
               items.push({
                 url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
-                location: locationPath,
-                category: catPath,
+                locationPath,
+                catPath,
               });
 
               for (let cat2 of cat.Level_CTE2) {
                 catPath =
-                  cat.CategoryName.replace(/[\W_]+/g, " ") +
+                  cat.CategoryName.replace(/[\W_]+/g, " ")
+                    .trim()
+                    .replace(/ /g, "-") +
                   "/" +
                   cat2.CategoryName1.replace(/[\W_]+/g, " ")
                     .trim()
@@ -214,15 +224,17 @@ function App() {
 
                 items.push({
                   url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
-                  location: locationPath,
-                  category: catPath,
+                  locationPath,
+                  catPath,
                 });
 
                 for (let cat3 of cat2.Level_CTE3) {
                   if (!cat3.CategoryId2) continue;
 
                   catPath =
-                    cat.CategoryName.replace(/[\W_]+/g, " ") +
+                    cat.CategoryName.replace(/[\W_]+/g, " ")
+                      .trim()
+                      .replace(/ /g, "-") +
                     "/" +
                     cat2.CategoryName1.replace(/[\W_]+/g, " ")
                       .trim()
@@ -234,8 +246,8 @@ function App() {
 
                   items.push({
                     url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
-                    location: locationPath,
-                    category: catPath,
+                    locationPath,
+                    catPath,
                   });
                 }
               }
@@ -284,11 +296,15 @@ function App() {
               <tr className="tableRow">
                 <th>{i + 1}</th>
                 <th>{e.url}</th>
-                <th>{`Buy and Sell ${e.category.split("/")[e.category.split("/").length - 1]} in ${
-                  e.location.split("/")[e.location.split("/").length - 1]
-                } , Canada (2021) - Marche`}</th>
-                <th>{e.location}</th>
-                <th>{e.category}</th>
+                <th>{`Buy and Sell ${e.catPath
+                  .split("/")
+                  [e.catPath.split("/").length - 1].split("-")
+                  .join(" ")} in ${e.locationPath
+                  .split("/")
+                  [e.locationPath.split("/").length - 1].split("-")
+                  .join(" ")}, Canada (2021) - Marche`}</th>
+                <th>{e.locationPath}</th>
+                <th>{e.catPath}</th>
               </tr>
             ))
           : null}
