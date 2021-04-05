@@ -328,26 +328,37 @@ function App() {
         </tr>
 
         {items
-          ? items.map((e, i) => (
-              <tr className="tableRow">
-                <th>{i + 1}</th>
-                <th>{e.url}</th>
-                {/* <th>{`Buy and Sell ${e.catPath
+          ? items.map((e, i) => {
+              let title;
+              if (e.id === 3152) {
+                title = `Hire or Find Jobs about ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
+              } else if (e.id === 3149) {
+                title = `Find and Advertise ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
+              } else if (e.id === 3194) {
+                title = `Adopt of Find ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
+              } else if (e.id === 3613) {
+                title = `Sharing Room or House in ${e.category} with marche Stays, (2021) - Marche Classifieds`;
+              } else {
+                title = `Buy and Sell ${e.category} in ${e.location}, Canada New/Used (2021) - Marche Classifieds`;
+              }
+
+              return (
+                <tr className="tableRow">
+                  <th>{i + 1}</th>
+                  <th>{e.url}</th>
+                  {/* <th>{`Buy and Sell ${e.catPath
                   .split("/")
                   [e.catPath.split("/").length - 1].split("-")
                   .join(" ")} in ${e.locationPath
                   .split("/")
                   [e.locationPath.split("/").length - 1].split("-")
                   .join(" ")}, Canada (2021) - Marche Classifieds`}</th> */}
-                <th>{`${
-                  e.id == 3152 ? "Hire or Find Jobs about" : e.id == 3149 ? "Find and Advertise" : "Buy and Sell"
-                } ${e.category} in ${e.location}, Canada${
-                  e.id == 3152 || e.id == 3152 ? "" : " New/Used"
-                } (2021) - Marche Classifieds`}</th>
-                <th>{e.locationPath}</th>
-                <th>{e.catPath}</th>
-              </tr>
-            ))
+                  <th>{title}</th>
+                  <th>{e.locationPath}</th>
+                  <th>{e.catPath}</th>
+                </tr>
+              );
+            })
           : null}
       </table>
     </div>
