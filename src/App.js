@@ -335,7 +335,7 @@ function App() {
               } else if (e.id === 3149) {
                 title = `Find and Advertise ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
               } else if (e.id === 3194) {
-                title = `Adopt of Find ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
+                title = `Adopt or Find ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
               } else if (e.id === 3613) {
                 title = `Sharing Room or House in ${e.category} with marche Stays, (2021) - Marche Classifieds`;
               } else {
