@@ -22,7 +22,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("https://themarche.ca:3100/api/MenuData/GetLocations")
+      .get("https://test-themarche.themarche.ca/api/MenuData/GetLocations")
       .then((response) => {
         let res = JSON.parse(response.data.result);
         setLocation(res["LocationsData"][0]["StatesCode"]);
@@ -33,7 +33,7 @@ function App() {
       });
 
     axios
-      .get("https://themarche.ca:3100/api/MenuData/GetMenu")
+      .get("https://test-themarche.themarche.ca/api/MenuData/GetMenu")
       .then((response) => {
         let res = JSON.parse(response.data.result);
         setCategoryData(res["MenuData"]);
