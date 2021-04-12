@@ -2,20 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 
-// const config = {
-//   redirecURI: "https://test-insta-login.netlify.app/",
-//   clientId: "704688546872217",
-//   clientSecret: "eaa76d9597e1b2ae7c26ac5f49cac8ff",
-// };
-
 function App() {
-  // const [instaToken, setInstaToken] = useState(null);
-  // const [instaUserId, setInstaUserId] = useState(null);
-  // const [instaUserName, setInstaUserName] = useState(null);
-  // const [instaEmail, setInstaEmail] = useState(null);
-  // const [instaAvt, setInstaAvt] = useState(null);
-  // const [showInstaLoginModal, setShowInstaLoginModal] = useState(false);
-
   const [locationsData, setLocation] = useState(false);
   const [categoryData, setCategoryData] = useState(null);
   const [items, setItems] = useState(null);
@@ -117,6 +104,7 @@ function App() {
             items.push({
               location: el.StateName,
               category: cat3.CategoryName2,
+              subId: cat3.CityAreaId,
               id: cat.CategoryId,
               url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
               locationPath,
@@ -195,6 +183,7 @@ function App() {
                 items.push({
                   location: el2.CityName,
                   category: cat3.CategoryName2,
+                  subId: cat3.CityAreaId,
                   id: cat.CategoryId,
                   url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
                   locationPath,
@@ -280,6 +269,7 @@ function App() {
                   items.push({
                     location: el3.CityAreaName,
                     category: cat3.CategoryName2,
+                    subId: cat3.CategoryId1,
                     id: cat.CategoryId,
                     url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
                     locationPath,
@@ -338,6 +328,10 @@ function App() {
                 title = `Adopt or Find ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
               } else if (e.id === 3613) {
                 title = `Sharing Room or House in ${e.category} with marche Stays, (2021) - Marche Classifieds`;
+              } else if (e.id === 3153 && e.subId) {
+                title = `Find Community or Service of ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
+              } else if (e.id === 3153 && e.subId) {
+                title = `Explore many ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
               } else {
                 title = `Buy and Sell ${e.category} in ${e.location}, Canada New/Used (2021) - Marche Classifieds`;
               }
