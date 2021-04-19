@@ -83,6 +83,8 @@ function App() {
             catPath,
             location: el.StateName,
             category: cat2.CategoryName1,
+
+            subId: cat2.CategoryId1,
             id: cat.CategoryId,
           });
 
@@ -159,6 +161,7 @@ function App() {
               items.push({
                 location: el2.CityName,
                 category: cat2.CategoryName1,
+                subId: cat2.CategoryId1,
                 id: cat.CategoryId,
                 url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
                 locationPath,
@@ -183,7 +186,6 @@ function App() {
                 items.push({
                   location: el2.CityName,
                   category: cat3.CategoryName2,
-                  subId: cat3.CityAreaId,
                   id: cat.CategoryId,
                   url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
                   locationPath,
@@ -244,6 +246,7 @@ function App() {
                 items.push({
                   location: el3.CityAreaName,
                   category: cat2.CategoryName1,
+                  subId: cat2.CategoryId1,
                   id: cat.CategoryId,
                   url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
                   locationPath,
@@ -269,7 +272,6 @@ function App() {
                   items.push({
                     location: el3.CityAreaName,
                     category: cat3.CategoryName2,
-                    subId: cat3.CategoryId1,
                     id: cat.CategoryId,
                     url: `https://themarche.ca/Listings/${locationPath}/${catPath}`,
                     locationPath,
@@ -328,6 +330,8 @@ function App() {
                 title = `Adopt or Find ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
               } else if (e.id === 3613) {
                 title = `Sharing Room or House in ${e.category} with marche Stays, (2021) - Marche Classifieds`;
+              } else if (e.id === 3153 && !e.subId) {
+                title = `Find ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
               } else if (e.id === 3153 && e.subId) {
                 title = `Find Community or Service of ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
               } else if (e.id === 3153 && e.subId) {
@@ -335,6 +339,8 @@ function App() {
               } else {
                 title = `Buy and Sell ${e.category} in ${e.location}, Canada New/Used (2021) - Marche Classifieds`;
               }
+
+              if (e.id === 3153) console.log(e);
 
               return (
                 <tr className="tableRow">
