@@ -317,6 +317,9 @@ function App() {
           <th>
             <h2>Category</h2>
           </th>
+          <th>
+            <h2>Description</h2>
+          </th>
         </tr>
 
         {items
@@ -356,6 +359,7 @@ function App() {
                   <th>{title}</th>
                   <th>{e.locationPath}</th>
                   <th>{e.catPath}</th>
+                  <th>{`${title}${e.category ? ` - ${e.category}` : ""}`}</th>
                 </tr>
               );
             })
