@@ -318,6 +318,9 @@ function App() {
             <h2>Category</h2>
           </th>
           <th>
+            <h2>Header (H1)</h2>
+          </th>
+          <th>
             <h2>Description</h2>
           </th>
         </tr>
@@ -325,22 +328,31 @@ function App() {
         {items
           ? items.map((e, i) => {
               let title;
+              let header;
               if (e.id === 3152) {
                 title = `Hire or Find Jobs about ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
+                header = `Hire or Find Jobs about ${e.category} in ${e.location}`;
               } else if (e.id === 3149) {
                 title = `Find and Advertise ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
+                header = `Find and Advertise ${e.category} in ${e.location}`;
               } else if (e.id === 3194) {
                 title = `Adopt or Find ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
+                header = `Adopt or Find ${e.category} in ${e.location}`;
               } else if (e.id === 3613) {
                 title = `Sharing Room or House in ${e.category} with marche Stays, (2021) - Marche Classifieds`;
+                header = `Sharing Room or House in ${e.category} with marche Stays`;
               } else if (e.id === 3153 && !e.subId) {
                 title = `Find ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
+                header = `Find ${e.category} in ${e.location}`;
               } else if (e.id === 3153 && e.subId) {
                 title = `Find Community or Service of ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
+                header = `Find Community or Service of ${e.category} in ${e.location}`;
               } else if (e.id === 3153 && e.subId) {
                 title = `Explore many ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
+                header = `Explore many ${e.category} in ${e.location}`;
               } else {
                 title = `Buy and Sell ${e.category} in ${e.location}, Canada New/Used (2021) - Marche Classifieds`;
+                header = `Buy and Sell ${e.category} in ${e.location}`;
               }
 
               if (e.id === 3153) console.log(e);
@@ -359,6 +371,7 @@ function App() {
                   <th>{title}</th>
                   <th>{e.locationPath}</th>
                   <th>{e.catPath}</th>
+                  <th>{header}</th>
                   <th>{`${title}${e.category ? ` - ${e.category}` : ""}`}</th>
                 </tr>
               );
