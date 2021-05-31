@@ -329,33 +329,37 @@ function App() {
           ? items.map((e, i) => {
               let title;
               let header;
-              if (e.id === 3152) {
-                title = `Hire or Find Jobs about ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
-                header = `Hire or Find Jobs about ${e.category} in ${e.location}`;
-              } else if (e.id === 3149) {
-                title = `Find and Advertise ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
-                header = `Find and Advertise ${e.category} in ${e.location}`;
-              } else if (e.id === 3194) {
-                title = `Adopt or Find ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
-                header = `Adopt or Find ${e.category} in ${e.location}`;
-              } else if (e.id === 3613) {
-                title = `Sharing Room or House in ${e.category} with marche Stays, (2021) - Marche Classifieds`;
-                header = `Sharing Room or House in ${e.category} with marche Stays`;
-              } else if (e.id === 3153 && !e.subId) {
-                title = `Find ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
-                header = `Find ${e.category} in ${e.location}`;
-              } else if (e.id === 3153 && e.subId) {
-                title = `Find Community or Service of ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
-                header = `Find Community or Service of ${e.category} in ${e.location}`;
-              } else if (e.id === 3153 && e.subId) {
-                title = `Explore many ${e.category} in ${e.location}, Canada (2021) - Marche Classifieds`;
-                header = `Explore many ${e.category} in ${e.location}`;
-              } else {
-                title = `Buy and Sell ${e.category} in ${e.location}, Canada New/Used (2021) - Marche Classifieds`;
-                header = `Buy and Sell ${e.category} in ${e.location}`;
-              }
+              let categoryName = e.category ? e.category : "";
+              let location = e.location ? e.location : "";
 
-              if (e.id === 3153) console.log(e);
+              if (e.id === 3152) {
+                title = `Hire or Find Jobs about ${categoryName} in ${location}, Canada (2021) - Marche Classifieds`;
+                header = `Hire or Find Jobs about ${categoryName} in ${location}`;
+              } else if (e.id === 3149) {
+                title = `Find and Advertise ${categoryName} in ${location}, Canada (2021) - Marche Classifieds`;
+                header = `Find and Advertise ${categoryName} in ${location}`;
+              } else if (e.id === 3194) {
+                title = `Adopt or Find ${categoryName} in ${location}, Canada (2021) - Marche Classifieds`;
+                header = `Adopt or Find ${categoryName} in ${location}`;
+              } else if (e.id === 3613) {
+                title = `Sharing Room or House in ${categoryName} with marche Stays, (2021) - Marche Classifieds`;
+                header = `Sharing Room or House in ${categoryName} with marche Stays`;
+              } else if (e.id === 3153 && !e.subId) {
+                title = `Find ${categoryName} in ${location}, Canada (2021) - Marche Classifieds`;
+                header = `Find ${categoryName} in ${location}`;
+              } else if (e.id === 3153 && e.subId) {
+                title = `Find Community or Service of ${categoryName} in ${location}, Canada (2021) - Marche Classifieds`;
+                header = `Find Community or Service of ${categoryName} in ${location}`;
+              } else if (e.id === 3153 && e.subId) {
+                title = `Explore many ${categoryName} in ${location}, Canada (2021) - Marche Classifieds`;
+                header = `Explore many ${categoryName} in ${location}`;
+              } else if (!e.id && !e.subId) {
+                title = `Buy and Sell ${categoryName} in ${location}, Canada New/Used (2021) - Marche Classifieds`;
+                header = `Buy and Sell ${categoryName} in ${location}`;
+              } else {
+                title = `Buy and Sell ${categoryName} in ${location}, Canada New/Used (2021) - Marche Classifieds`;
+                header = `${categoryName} in ${location}`;
+              }
 
               return (
                 <tr className="tableRow">
