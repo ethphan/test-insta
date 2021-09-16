@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 
+const baseURL = "https://test-web-link.themarche.ca";
+
 function App() {
   const [locationsData, setLocation] = useState(false);
   const [categoryData, setCategoryData] = useState(null);
@@ -9,7 +11,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("https://test-themarche.themarche.ca/api/MenuData/GetLocations")
+      .get(`${baseURL}/api/MenuData/GetLocations`)
       .then((response) => {
         let res = JSON.parse(response.data.result);
         setLocation(res["LocationsData"][0]["StatesCode"]);
@@ -20,7 +22,7 @@ function App() {
       });
 
     axios
-      .get("https://test-themarche.themarche.ca/api/MenuData/GetMenu")
+      .get(`${baseURL}/api/MenuData/GetMenu`)
       .then((response) => {
         let res = JSON.parse(response.data.result);
         setCategoryData(res["MenuData"]);
