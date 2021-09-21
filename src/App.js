@@ -320,10 +320,13 @@ function App() {
             <h2>Category</h2>
           </th>
           <th>
-            <h2>Header (H1)</h2>
+            <h2>Header 1 (H1)</h2>
           </th>
           <th>
             <h2>Description</h2>
+          </th>
+          <th>
+            <h2>Header 2 (H2)</h2>
           </th>
         </tr>
 
@@ -333,6 +336,7 @@ function App() {
               let header;
               let categoryName = e.category ? e.category : "";
               let location = e.location ? e.location : "";
+              let header2 = `${categoryName === "" ? "Buy and Sell" : categoryName} in ${location}`;
 
               if (e.id === 3152) {
                 title = `Hire or Find Jobs about ${categoryName} in ${location}, Canada (2021) - Marche Classifieds`;
@@ -379,6 +383,7 @@ function App() {
                   <th>{e.catPath}</th>
                   <th>{header}</th>
                   <th>{`${title}${e.category ? ` - ${e.category}` : ""}`}</th>
+                  <th>{header2}</th>
                 </tr>
               );
             })
