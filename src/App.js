@@ -336,7 +336,7 @@ function App() {
               let header;
               let categoryName = e.category ? e.category : "";
               let location = e.location ? e.location : "";
-              let header2 = `${categoryName === "" ? "Buy and Sell" : categoryName} in ${location}`;
+              let header2 = `${categoryName === "" ? "Buy and Sell" : categoryName} ${location}`;
 
               if (e.id === 3152) {
                 title = `Hire or Find Jobs about ${categoryName} in ${location}, Canada (2021) - Marche Classifieds`;
